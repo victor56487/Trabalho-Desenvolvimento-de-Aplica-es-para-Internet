@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de Produtos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="site-title" tabindex="0">
+  <span class="title-icon" aria-hidden="true">📦</span>
+  <span class="title-text">Catálogo de Produtos Interativo</span>
+</h1>
+
+
+      <div class="header-right">Feito com jQuery + AJAX</div>
+    </header>
+
+    <div class="controls">
+      <button id="carregarProdutos" class="btn">Carregar Produtos</button>
+      <span id="productCount" class="ml-12 fw-600"></span>
+      <button id="clearAllFilters" class="btn btn-light btn-rounded-sm ml-12 p-6-8">Limpar filtros</button>
+
+
+      <nav class="filters-nav" role="navigation">
+
+  <label for="searchInput" class="sr-only">Buscar produtos por nome ou descrição</label>
+  <input id="searchInput" class="input-search" placeholder="Buscar por nome ou descrição..." autocomplete="off" />
+
+  <div class="filter-group price-filter mt-12"> <!-- removido style -->
+    <label class="fw-600 mb-6 d-block">Filtrar por preço</label>
+
+    <div class="flex-wrap gap-8 align-center"> <!-- removido style -->
+
+      <label for="minPrice" class="sr-only">Preço mínimo</label>
+      <input id="minPrice" type="number" placeholder="Preço mínimo (R$)" class="input-price" />
+
+      <label for="maxPrice" class="sr-only">Preço máximo</label>
+      <input id="maxPrice" type="number" placeholder="Preço máximo (R$)" class="input-price" />
+
+      <button id="applyPriceFilter" class="btn p-8-12">Aplicar</button>
+      <button id="clearPriceFilter" class="btn btn-light p-8-12">Limpar</button>
+
+    </div>
+  </div>
+
+</nav>
+
+
+      <select id="categorySelect" class="select" aria-label="Filtro por categoria"></select>
+
+      <select id="sortSelect" class="select" aria-label="Ordenação">
+        <option value="">Ordenar</option>
+        <option value="nome-asc">Nome (A-Z)</option>
+        <option value="preco-asc">Preço (menor)</option>
+        <option value="preco-desc">Preço (maior)</option>
+      </select>
+    </div>
+
+    <div id="loadingState" class="spinner hidden">
+      <div class="spinner-icon"></div>
+      <div>Carregando produtos...</div>
+    </div>
+
+    <div class="footer-note">Exibindo <span id="count">0</span> itens</div>
+
+    <main>
+      <div id="productsList" class="grid"></div>
+    </main>
+
+    <div class="modal-backdrop modal-backdrop-hidden">
+      <div id="productModal" class="modal" role="dialog" aria-hidden="true">
+        <button id="modalClose" class="close" aria-label="Fechar">&times;</button>
+        <h3 id="modalTitle"></h3>
+        <div id="modalContent"></div>
+      </div>
+      
+      <div id="zoomResult" class="zoom-result zoom-hidden" aria-hidden="true"></div>
+</div>
+
+    <div class="spacer-40"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/jquery-3.7.1.min.js"><\/script>')</script>
+
+  <!-- carregar JSON local (produtos.js) antes do main.js -->
+  <script src="js/produtos.js"></script>
+
+  <script>
+    console.log('1) página:', location.href);
+  </script>
+  <script src="js/main.js"></script>
+
+  <footer class="footer-inline">
+  <div>Catálogo de Produtos — Desenvolvido por você</div>
+  <div class="footer-note-small">Abra com Live Server no VS Code para carregar JSON local.</div>
+</footer>
+
+<!-- BOTÃO VOLTAR AO TOPO (DENTRO DO BODY) -->
+<button id="btnTop" class="btn-top" aria-label="Voltar ao topo">↑</button>
+
+</body>
+</html>
+
